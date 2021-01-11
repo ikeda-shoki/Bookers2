@@ -10,33 +10,7 @@
 <% end %>
 
 <div class="main">
-  <div class="main-left">
-    <div class="main-user">
-      <h2 class="main-user-title">
-        User Info
-      </h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-      <p>name<%= @user.name %></p>
-      <p>introduction<%= @user.introduction %></p>
-      <% if @user == current_user %>
-        <%= link_to "<span>編集</span>", edit_user_path(@user) %>
-      <% else %>
-        <%= link_to "<span>編集</span>", user_path(@user) %>
-      <% end %>
-    </div>
-    <div class="main-newbook">
-      <h2 class="main-newbook-title">
-        New Book
-      </h2>
-      <%= form_with model: @book, local:true do |f| %>
-        <p>Title</p>
-        <%= f.text_field :title %>
-        <p>Opinion</p>
-        <%= f.text_area :body %>
-        <%= f.submit "Create Book" %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'books/list', user: @user, book: @book %>
   <div class="main-right">
     <div class="main-books">
       <h2 class="main-books-title">
@@ -62,6 +36,7 @@
             </tr>
           <% end %>
         </table>
+        <%= paginate @users %>
       </div>
     </div>
   </div>
