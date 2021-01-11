@@ -15,7 +15,7 @@
       <h2 class="main-user-title">
         User Info
       </h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
       <p>name<%= @user.name %></p>
       <p>introduction<%= @user.introduction %></p>
       <% if @user == current_user %>
@@ -40,24 +40,24 @@
   <div class="main-right">
     <div class="main-books">
       <h2 class="main-books-title">
-        Books
+        Users
       </h2>
       <div class="main-books-items">
         <table class="books-table">
           <tr>
-            <th>Title</th>
-            <th>Opinion</th>
+            <th>image</th>
+            <th>name</th>
           </tr>
-          <% @books.each do |book| %>
+          <% @users.each do |user| %>
             <tr>
               <td>
-                <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
               </td>
               <td>
-                <%= link_to book.title , book_path(book.id)  %>
+                <%= user.name %>
               </td>
               <td>
-                <%= book.body %>
+                <%= link_to "Show", user_path(user.id) %>
               </td>
             </tr>
           <% end %>

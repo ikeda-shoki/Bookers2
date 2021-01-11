@@ -13,10 +13,20 @@
     <header>
       <nav class="header-nav">
         <ul class="header-nav-items">
-          <li class="heade-nav-item">Home</li>
+          <li class="heade-nav-item">
+            <% if user_signed_in? %>
+              <%= link_to "Home", user_path(current_user.id) %>
+            <% else %>
+              <%= link_to "Home", root_path %>
+            <% end %>
+          </li>
           <% if user_signed_in? %>
-            <li class="header-nav-item">User</li>
-            <li class="header-nav-item">Books</li>
+            <li class="header-nav-item">
+              <%= link_to "User", users_path %>
+            </li>
+            <li class="header-nav-item">
+              <%= link_to "Books", books_path %>
+            </li>
             <li class="header-nav-item">
               <%= link_to "logout", destroy_user_session_path, method: :delete %>
             </li>
@@ -35,13 +45,17 @@
       </nav>
     </header>
     
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
     <%= yield %>
-    
+
     <footer>
       <div class="top-footer">
         <p>CopyRight Infratop.inc</p>
       </div>
     </footer>
-    
+
   </body>
 </html>

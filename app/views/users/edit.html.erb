@@ -1,0 +1,27 @@
+<% if @user.errors.any? %>
+<div class="error-message">
+  <h2><%= pluralize(@user.errors.count, "error" )%> prohibited this product from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="user-edit">
+  <h1 class="user-edit-title">
+    User info
+  </h1>
+  <div class="user-edit-main">
+    <%= form_with model: @user, local: true do |f| %>
+    <p>Name</p>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
+    <p>Image</p>
+    <%= f.attachment_field :profile_image, placeholder: 'プロフィール画像'%>
+    <p>Introduction</p>
+    <%= f.text_area :introduction %>
+    <%= f.submit "Update User" %>
+    <% end %>
+  </div>
+</div>
