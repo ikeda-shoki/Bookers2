@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-<div class="error-message">
+<div class="error-message text-danger">
   <h2><%= pluralize(@book.errors.count, "error" )%> prohibited this product from being saved:</h2>
   <ul>
     <% @book.errors.full_messages.each do |message| %>
@@ -9,25 +9,36 @@
 </div>
 <% end %>
 
-<div class="main">
+<div class="main row mt-3">
   <%= render 'books/list', user: @user, book: @book %>
-  <div class="main-right">
+  <div class="main-right col-md-8">
     <div class="main-books">
       <h2 class="main-books-title">
         Book detail
       </h2>
-      <div class="main-books-items">
-        <div class="main-books-item-img">
-          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-          <%= link_to @user.name, user_path(@user) %>
-        </div>
-        <%= link_to @books.title, book_path(@books) %>
-        <%= @books.body %>
-        <% if @books.user_id == current_user.id %>
-          <%= link_to "Edit", edit_book_path(@books) %>
-          <%= link_to "Destroy", book_path(@books), method: :delet, data: {confirm: "本当に消しますか？"}%>
-        <% end %>
-      </div>
+      <table class="table main-book-edit">
+        <tr>
+          <td>
+            <%= attachment_image_tag(@user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: "40x40", class: "d-block") %>
+            <%= link_to @user.name, user_path(@user), class: "d-block" %>
+          </td>
+          <td>
+            <%= link_to @books.title, book_path(@books) %>
+          </td>
+          <td>
+            <%= @books.body %>
+          </td>
+          <% if @books.user_id == current_user.id %>
+            <td>
+              <%= link_to "Edit", edit_book_path(@books), class: "btn btn-success" %>
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path(@books), method: :delet, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %>
+            </td>
+          <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

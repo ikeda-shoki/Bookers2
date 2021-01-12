@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def create
     @user = current_user
-    @books = Book.all
+    @books = Book.page(params[:page]).reverse_order
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save

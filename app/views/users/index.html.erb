@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-<div class="error-message">
+<div class="error-message text-danger">
   <h2><%= pluralize(@book.errors.count, "error" )%> prohibited this product from being saved:</h2>
   <ul>
     <% @book.errors.full_messages.each do |message| %>
@@ -9,23 +9,26 @@
 </div>
 <% end %>
 
-<div class="main">
+<div class="main row mt-3">
   <%= render 'books/list', user: @user, book: @book %>
-  <div class="main-right">
+  <div class="main-right col-md-8 ">
     <div class="main-books">
       <h2 class="main-books-title">
         Users
       </h2>
       <div class="main-books-items">
-        <table class="books-table">
-          <tr>
-            <th>image</th>
-            <th>name</th>
-          </tr>
+        <table class="books-table table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+            </tr>
+          </thead>
           <% @users.each do |user| %>
             <tr>
               <td>
-                <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40') %>
               </td>
               <td>
                 <%= user.name %>

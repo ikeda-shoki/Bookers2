@@ -1,20 +1,27 @@
-<div class="top">
-  <div class="top-header">
-    <h1 class="top-title">
-      welcome to <strong><span></span>Bookers !!</strong>
-    </h1>
-    <p>In <strong><span></span>Bookers,</strong></p>
-  </div>
-  
-  <div class="top-body">
-    <p class="top-body-text">you can share and exchange your opinions , inpressions , and emotions</p>
-    <p class="top-body-text">about various books!</p>
-    
-    <div class="top-body-buttons">
-      
+<div class="top row mt-3">
+  <div class="top-main col-11 col-sm-10 col-lg-8 col-xl-6 mx-auto">
+    <div class="top-header">
+      <h1 class="top-title">
+        welcome to <strong><i class="fas fa-book"></i>Bookers !!</strong>
+      </h1>
+      <p>In <strong><i class="fas fa-book"></i>Bookers,</strong></p>
+    </div>
+
+    <div class="top-body">
+      <p class="top-body-text">you can share and exchange your opinions , inpressions , and emotions</p>
+      <p class="top-body-text">about various books!</p>
+
+      <div class="top-body-buttons row">
+        <button type="button" class="btn btn-info d-block mx-auto mb-3 col-8">
+          <%= link_to "Log in", new_user_session_path, class: "text-white" %>
+        </button>
+        <button type="button" class="btn btn-success d-block mx-auto col-8">
+          <%= link_to "Sign Up", new_user_registration_path, class: "text-white" %>
+        </button>
+      </div>
     </div>
   </div>
-  
-  
-  
+
+
+
 </div>

@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-<div class="error-message">
+<div class="error-message text-danger">
   <h2><%= pluralize(@book.errors.count, "error" )%> prohibited this product from being saved:</h2>
   <ul>
     <% @book.errors.full_messages.each do |message| %>
@@ -10,7 +10,7 @@
 <% end %>
 
 
-<div class="book-edit">
+<div class="book-edit mt-3 mx-auto col-6">
   <h1 class="book-edit-title">Editing Book</h1>
   <div class="book-edit-body">
     <%= form_with model: @book, local: true do |f| %>
@@ -18,7 +18,7 @@
     <%= f.text_field :title %>
     <p>Opinion</p>
     <%= f.text_area :body %>
-    <%= f.submit "Update Book" %>
+    <%= f.submit "Update Book", class: "d-block btn btn-success my-3" %>
     <% end %>
   </div>
   <div class="book-edit-links">

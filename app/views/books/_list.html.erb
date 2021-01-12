@@ -1,18 +1,30 @@
-<div class="main-left">
-  <div class="main-user">
+<div class="main-left col-md-3 mr-auto">
+  <div class="main-user ">
     <h2 class="main-user-title">
       User Info
     </h2>
-    <%= attachment_image_tag user, :profile_image, :fill, 60, 60 %>
-    <p>name<%= user.name %></p>
-    <p>introduction<%= user.introduction %></p>
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "mb-2" %>
+    <table class="table">
+      <tr>
+        <th><strong>name</strong></th>
+        <th><strong><%= user.name %></strong></th>
+      </tr>
+      <tr>
+        <th><strong>introduction</strong></th>
+        <th><strong><%= user.introduction %></strong></th>
+      </tr>
+    </table>
     <% if user == current_user %>
-      <%= link_to "<span>編集</span>", edit_user_path(user) %>
+      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary d-block" do %>
+        <strong><i class="fas fa-user-cog"></i></strong>
+      <% end %>
     <% else %>
-      <%= link_to "<span>編集</span>", user_path(user) %>
+      <%= link_to user_path(user), class: "btn btn-outline-secondary d-block" do %>
+        <strong><i class="fas fa-user-cog"></i></strong>
+      <% end %>
     <% end %>
   </div>
-  <div class="main-newbook">
+  <div class="main-newbook mt-5">
     <h2 class="main-newbook-title">
       New Book
     </h2>
@@ -21,7 +33,7 @@
       <%= f.text_field :title %>
       <p>Opinion</p>
       <%= f.text_area :body %>
-      <%= f.submit "Create Book" %>
+      <%= f.submit "Create Book", class: "btn btn-success mt-3" %>
     <% end %>
   </div>
  </div>

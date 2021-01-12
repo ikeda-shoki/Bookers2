@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-<div class="error-message">
+<div class="error-message text-danger">
   <h2><%= pluralize(@user.errors.count, "error" )%> prohibited this product from being saved:</h2>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -9,7 +9,7 @@
 </div>
 <% end %>
 
-<div class="user-edit">
+<div class="user-edit mt-3 mx-auto col-6">
   <h1 class="user-edit-title">
     User info
   </h1>
@@ -21,7 +21,7 @@
     <%= f.attachment_field :profile_image, placeholder: 'プロフィール画像'%>
     <p>Introduction</p>
     <%= f.text_area :introduction %>
-    <%= f.submit "Update User" %>
+    <%= f.submit "Update User", class: "d-block btn btn-secondary mt-3" %>
     <% end %>
   </div>
 </div>
