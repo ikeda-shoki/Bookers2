@@ -1,4 +1,4 @@
-<div class="main-left col-md-3 mr-auto">
+<div class="main-left col-md-3">
   <div class="main-user ">
     <h2 class="main-user-title">
       User Info
@@ -14,19 +14,15 @@
         <th><strong><%= user.introduction %></strong></th>
       </tr>
     </table>
-    <% if user == current_user %>
-      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary d-block" do %>
-        <strong><i class="fas fa-user-cog"></i></strong>
-      <% end %>
-    <% else %>
-      <%= link_to user_path(user), class: "btn btn-outline-secondary d-block" do %>
-        <strong><i class="fas fa-user-cog"></i></strong>
-      <% end %>
+    
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary d-block" do %>
+      <strong><i class="fas fa-user-cog"></i></strong>
     <% end %>
+    
   </div>
   <div class="main-newbook mt-5">
     <h2 class="main-newbook-title">
-      New Book
+      New book
     </h2>
     <%= form_with model: book, local:true do |f| %>
       <p>Title</p>

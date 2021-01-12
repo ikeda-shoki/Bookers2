@@ -11,7 +11,7 @@
 
 <div class="main row mt-3">
   <%= render 'books/list', user: @user, book: @book %>
-  <div class="main-right col-md-8">
+  <div class="main-right col-md-8 offset-md-1">
     <div class="main-books">
       <h2 class="main-books-title">
         Book detail
@@ -33,7 +33,7 @@
               <%= link_to "Edit", edit_book_path(@books), class: "btn btn-success" %>
             </td>
             <td>
-              <%= link_to "Destroy", book_path(@books), method: :delet, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %>
+              <%= link_to "Destroy", book_path(@books), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %>
             </td>
           <% end %>
           </td>
